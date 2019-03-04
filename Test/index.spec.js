@@ -1,4 +1,4 @@
-import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile } from "../src/module/path";
+import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles } from "../src/module/path";
 
 
 describe('pathToBeAbsolute', () => {
@@ -53,4 +53,17 @@ describe('pathIsFile', () => {
     it ('deberia retornar true', () => {
     expect(pathIsFile('Test\\prueba.js')).toEqual(true);
     });
+});
+
+describe('contentFiles', () => {
+    it('debería retornar un array con todas las rutas MD', () => {
+    expect(contentFiles('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md')).toEqual( ['C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md']);
+    });
+    it('debería retornar un array con todas las rutas MD', () => {
+        expect(contentFiles('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds')).toEqual([
+            'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+            'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md',
+            'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md'
+        ]);
+        });
 });
