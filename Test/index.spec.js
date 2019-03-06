@@ -1,4 +1,4 @@
-import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles } from "../src/module/path";
+import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path";
 
 
 describe('pathToBeAbsolute', () => {
@@ -66,4 +66,35 @@ describe('contentFiles', () => {
             'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md'
         ]);
         });
+});
+
+describe('getLinks', () => {
+    it('debería retornar un array de objetos contenniendo: href, text y file', () => {
+    expect(getLinks('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md')).toEqual( 
+        [ { href: 'https://es.wikipedia.org/wiki/Markdown',
+    text: 'Markdown',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
+  { href: 'https://nodejs.org/',
+    text: 'Node.js',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
+  { href: 'https://semver.org/',
+    text: 'Semver',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
+  { href: 'https://nodejs.org/en/',
+    text: 'Node.js',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
+  { href: 'https://nodejs.org/api/fs.html',
+    text: 'File System',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
+  { href: 'https://daringfireball.net/projects/markdown/syntax',
+    text: 'Markdown',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' } ]
+        );
+    });
 });

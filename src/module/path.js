@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const myMarked = require('marked');
+const marked = require('marked');
 
 
 export const pathToBeAbsolute = (pathToEvaluate) => {           //booleano
@@ -38,12 +38,15 @@ export const pathIsDirectory = (pathToEvaluate) => {
      return contentFileMD;
   };
 
-export const getLinks = (arrFiles) => {
-    let arrObjLinks = [];
-    arrFiles.forEach((file) => {
-        fs.readFile(file, (err, data) => {
-            const renderer = new myMarked.Renderer();
-        })
-    })
-    return arrObjLinks;
+export const getLinks = (routeMD) => {
+    const readFiles =  fs.readFileSync(routeMD, 'utf8');
+    let arrayObjLinks = [];
+    const renderer = new marked.Renderer(); 
+    renderer.link = (href, title, text) => {
+        arrayObjLinks.push({ href, text, file: routeMD }); 
+        return ''; 
+    }; 
+    marked(readFiles, {renderer}); 
+    return arrayObjLinks;
 };
+
