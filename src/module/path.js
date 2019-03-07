@@ -38,15 +38,34 @@ export const pathIsDirectory = (pathToEvaluate) => {
      return contentFileMD;
   };
 
-export const getLinks = (routeMD) => {
-    const readFiles =  fs.readFileSync(routeMD, 'utf8');
+  export const getLinks = (arrayRoutesMD) => {
     let arrayObjLinks = [];
-    const renderer = new marked.Renderer(); 
-    renderer.link = (href, title, text) => {
-        arrayObjLinks.push({ href, text, file: routeMD }); 
-        return ''; 
-    }; 
-    marked(readFiles, {renderer}); 
+    arrayRoutesMD.forEach((routeMD) => {
+        const readFiles =  fs.readFileSync(routeMD, 'utf8');
+        const renderer = new marked.Renderer(); 
+        renderer.link = (href, title, text) => {
+            arrayObjLinks.push({ href, text, file: routeMD }); 
+            return ''; 
+      }
+      marked(readFiles, {renderer}); 
+    })
     return arrayObjLinks;
 };
 
+// console.log(getLinks([
+//     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+//     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md',
+//     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md'
+// ]));
+
+//  const getLinks = (routeMD) => {
+//     const readFiles =  fs.readFileSync(routeMD, 'utf8');
+//     let arrayObjLinks = [];
+//     const renderer = new marked.Renderer(); 
+//     renderer.link = (href, title, text) => {
+//         arrayObjLinks.push({ href, text, file: routeMD }); 
+//         return ''; 
+//     }; 
+//     marked(readFiles, {renderer}); 
+//     return arrayObjLinks;
+// };

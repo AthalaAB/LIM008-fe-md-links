@@ -70,7 +70,11 @@ describe('contentFiles', () => {
 
 describe('getLinks', () => {
     it('debería retornar un array de objetos contenniendo: href, text y file', () => {
-    expect(getLinks('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md')).toEqual( 
+    expect(getLinks([
+        'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+        'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md',
+        'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md'
+    ])).toEqual( 
         [ { href: 'https://es.wikipedia.org/wiki/Markdown',
     text: 'Markdown',
     file:
@@ -94,7 +98,55 @@ describe('getLinks', () => {
   { href: 'https://daringfireball.net/projects/markdown/syntax',
     text: 'Markdown',
     file:
-     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' } ]
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
+  { href: 'https://es.wikipedia.org/wiki/Markdown',
+    text: 'Markdown',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md' },
+  { href: 'https://nodejs.org/',
+    text: 'Node.js',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md' },
+  { href: 'https://semver.org/',
+    text: 'Semver',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md' },
+  { href: 'https://nodejs.org/en/',
+    text: 'Node.js',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md' },
+  { href: 'https://nodejs.org/api/fs.html',
+    text: 'File System',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md' },
+  { href: 'https://daringfireball.net/projects/markdown/syntax',
+    text: 'Markdown',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md' },
+  { href: 'https://es.wikipedia.org/wiki/Markdown',
+    text: 'Markdown',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md' },
+  { href: 'https://nodejs.org/',
+    text: 'Node.js',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md' },
+  { href: 'https://semver.org/',
+    text: 'Semver',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md' },
+  { href: 'https://nodejs.org/en/',
+    text: 'Node.js',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md' },
+  { href: 'https://nodejs.org/api/fs.html',
+    text: 'File System',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md' },
+  { href: 'https://daringfireball.net/projects/markdown/syntax',
+    text: 'Markdown',
+    file:
+     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md' } ]
         );
     });
 });
