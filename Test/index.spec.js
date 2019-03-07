@@ -1,4 +1,4 @@
-import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path";
+import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks, validateLinks } from "../src/module/path";
 
 
 describe('pathToBeAbsolute', () => {

@@ -52,20 +52,63 @@ export const pathIsDirectory = (pathToEvaluate) => {
     return arrayObjLinks;
 };
 
-// console.log(getLinks([
-//     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
-//     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir2\\readme.md',
-//     'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md'
-// ]));
+// export const validateLinks = (arrayObjLinks) => {
+//    const newArrLink = [];
+//     arrayObjLinks.forEach((objLink) => {
+//         fetch(objLink.href)
+//         .then( function(response){
+//             if (response.status !== 200){
+//                 const status = response.status;
+//             }
+//         })
 
-//  const getLinks = (routeMD) => {
-//     const readFiles =  fs.readFileSync(routeMD, 'utf8');
-//     let arrayObjLinks = [];
-//     const renderer = new marked.Renderer(); 
-//     renderer.link = (href, title, text) => {
-//         arrayObjLinks.push({ href, text, file: routeMD }); 
-//         return ''; 
-//     }; 
-//     marked(readFiles, {renderer}); 
-//     return arrayObjLinks;
+//     })
+//     return newArrLink;
 // };
+
+export const validateLinks = (arrayObjLinks) => {
+   const newArrLink = [];
+    arrayObjLinks.forEach((objLink) => {
+        http.get(objLink.href , (res) => {
+        const { statusCode } = res;
+        const contentType = res.headers['content-type'];
+
+        let error;
+        if (statusCode !== 200) {
+            error = new Error('Request Failed.\n' +
+                            `Status Code: ${statusCode}`);
+        } else if (!/^application\/json/.test(contentType)) {
+            error = new Error('Invalid content-type.\n' +
+                            `Expected application/json but received ${contentType}`);
+        }
+        if (error) {
+            console.error(error.message);
+            // consume response data to free up memory
+            res.resume();
+            return;
+        }
+    })
+    })
+    return newArrLink;
+};
+
+ 
+// fetch('./api/some.json')
+//   .then(
+//     function(response) {
+//       if (response.status !== 200) {
+//         console.log('Looks like there was a problem. Status Code: ' +
+//           response.status);
+//         return;
+//       }
+
+//       // Examine the text in the response
+//       response.json().then(function(data) {
+//         console.log(data);
+//       });
+//     }
+//   )
+//   .catch(function(err) {
+//     console.log('Fetch Error :-S', err);
+//   });
+
