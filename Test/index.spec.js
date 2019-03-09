@@ -1,5 +1,5 @@
-import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks, validateLinks } from "../src/module/path";
-
+import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path";
+import { validateLinks } from "../src/module/validate";
 
 describe('pathToBeAbsolute', () => {
     it('deberia ser una funcion', () => {
@@ -79,7 +79,7 @@ describe('getLinks', () => {
     text: 'Markdown',
     file:
      'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
-  { href: 'https://nodejs.org/',
+  { href: 'https://nodvgbhjejs.org/dfghj',
     text: 'Node.js',
     file:
      'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
@@ -149,4 +149,47 @@ describe('getLinks', () => {
      'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\readme.md' } ]
         );
     });
+});
+
+describe('validateLinks', () => {
+    it('debería ', () => {
+    expect(validateLinks(getLinks(contentFiles('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md'
+        )))).toEqual( [ { href: 'https://es.wikipedia.org/wiki/Markdown',
+        text: 'Markdown',
+        file:
+         'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+        status: 200,
+        message: 'OK' },
+      { href: 'https://nodvgbhjejs.org/dfghj',
+        text: 'Node.js',
+        file:
+         'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+        status: '',
+        message: 'Not Found' },
+      { href: 'https://semver.org/',
+        text: 'Semver',
+        file:
+         'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+        status: 200,
+        message: 'OK' },
+      { href: 'https://nodejs.org/en/',
+        text: 'Node.js',
+        file:
+         'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+        status: 200,
+        message: 'OK' },
+      { href: 'https://nodejs.org/api/fs.html',
+        text: 'File System',
+        file:
+         'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+        status: 200,
+        message: 'OK' },
+      { href: 'https://daringfireball.net/projects/markdown/syntax',
+        text: 'Markdown',
+        file:
+         'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
+        status: 200,
+        message: 'OK' }]
+        );
+});
 });
