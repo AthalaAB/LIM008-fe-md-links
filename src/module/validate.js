@@ -23,6 +23,6 @@ export const validateLinks = (arrayObjLinks) => {
    });
    return Promise.all(roveArrObj);
    };
-   
+
   //  validateLinks(getLinks(contentFiles('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md'))).then(res => console.log(res));
 

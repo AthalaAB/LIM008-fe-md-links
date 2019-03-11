@@ -1,3 +1,6 @@
+import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path";
+import { validateLinks } from "../src/module/validate";
+
 const mdLinks = require("md-links");
 
 mdLinks("./some/example.md")
