@@ -1,6 +1,6 @@
 import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path";
 import { validateLinks } from "../src/module/validate";
-import { stats } from "../src/module/stats";
+import { statsOfLinks } from "../src/module/stats";
 
 const arrRoutesMD = [
   'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
@@ -16,7 +16,7 @@ file:
 text: 'Node.js',
 file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
-{ href: 'https://semver.org/',
+{ href: 'https://semver.org/hhh',
 text: 'Semver',
 file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
@@ -24,7 +24,7 @@ file:
 text: 'Node.js',
 file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
-{ href: 'https://nodejs.org/api/fs.html',
+{ href: 'https://nodejs.org/en/',
 text: 'File System',
 file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md' },
@@ -93,19 +93,19 @@ file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
 status: '',
 message: 'Not Found' },
-{ href: 'https://semver.org/',
+{ href: 'https://semver.org/hhh',
 text: 'Semver',
 file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
-status: 200,
-message: 'OK' },
+status: 404,
+message: 'Fail' },
 { href: 'https://nodejs.org/en/',
 text: 'Node.js',
 file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
 status: 200,
 message: 'OK' },
-{ href: 'https://nodejs.org/api/fs.html',
+{ href: 'https://nodejs.org/en/',
 text: 'File System',
 file:
  'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
@@ -118,11 +118,9 @@ file:
 status: 200,
 message: 'OK' } ];
 
-describe('pathToBeAbsolute', () => {
-    it('deberia ser una funcion', () => {
-        expect(typeof pathToBeAbsolute).toBe('function');
-    });
-});
+const objWithStats = { Total: 6, Unicos: 5 };
+
+
 
 describe('pathToBeAbsolute', () => {
     it('deberia retorar true', () => {
@@ -137,32 +135,14 @@ describe('pathToBeAbsolute', () => {
 });
 
 describe('relativeToAbsolute', () => {
-    it('deberia ser una funcion', () => {
-        expect(typeof relativeToAbsolute).toBe('function');
-    });
-});
-
-describe('relativeToAbsolute', () => {
     it('deberia retornar ruta absoluta', () => {
         expect(relativeToAbsolute('test/demo_path.js')).toBe('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\test\\demo_path.js');
     });
 });
 
 describe('pathIsDirectory', () => {
-    it('deberia ser una funcion', () => {
-        expect(typeof pathIsDirectory).toBe('function');
-    });
-});
-
-describe('pathIsDirectory', () => {
     it ('deberia retornar true', () => {
     expect(pathIsDirectory('.\\test')).toBe(true);
-    });
-});
-
-describe('pathIsFile', () => {
-    it('deberia ser una funcion', () => {
-        expect(typeof pathIsFile).toBe('function');
     });
 });
 
@@ -187,14 +167,17 @@ describe('getLinks', () => {
     });
 });
 
-// describe('validateLinks', () => {
-//     it('debería devolver el array de objetos con los links y su status y statusText ', () => {
-//     expect(validateLinks(objLinks)).toEqual(linksWithStatus);
-// });
-// });
+describe('validateLinks', () => {
+    it.only('debería devolver el array de objetos con los links y su status y statusText ', (done) => {
+    validateLinks(objLinks).then((result) => { 
+        expect (result).toEqual(linksWithStatus); 
+        done();
+});
+});
+});
 
 describe('stats', () => {
-  it('debería retornar el número de links únicos', () => {
-  expect(stats(linksWithStatus)).toEqual(6);
+  it('debería retornar el número de links totales y únicos', () => {
+  expect(statsOfLinks(linksWithStatus)).toEqual(objWithStats);
   });
 });

@@ -42,7 +42,7 @@ export const getLinks = (arrayRoutesMD) => {
     arrayRoutesMD.forEach((routeMD) => {
         const readFiles =  fs.readFileSync(routeMD, 'utf8');
         const renderer = new marked.Renderer(); 
-        renderer.link = (href, title, text) => {
+        renderer.link = (href, __, text) => {
             arrayObjLinks.push({ href, text, file: routeMD }); 
             return ''; 
       }
