@@ -170,8 +170,8 @@ describe('validateLinks', () => {
     validateLinks(objLinks).then((result) => { 
         expect (result).toEqual(linksWithStatus); 
         done();
-});
-});
+    });
+  });
 });
 
 describe('statsOfLinks', () => {

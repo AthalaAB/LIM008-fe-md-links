@@ -28,5 +28,5 @@ const mdLinks = (path, options) => {
   })
 }
 
-mdLinks('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds')
+mdLinks('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds', {validate:true})
 .then(res => console.log(res));
