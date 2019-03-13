@@ -1,6 +1,6 @@
 import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path";
 import { validateLinks } from "../src/module/validate";
-import { statsOfLinks } from "../src/module/stats";
+import { statsOfLinks, linksBroken } from "../src/module/stats";
 
 const arrRoutesMD = [
   'C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds\\dir1\\readme.md',
@@ -118,8 +118,6 @@ file:
 status: 200,
 message: 'OK' } ];
 
-const objWithStats = { Total: 6, Unicos: 5 };
-
 
 
 describe('pathToBeAbsolute', () => {
@@ -168,7 +166,7 @@ describe('getLinks', () => {
 });
 
 describe('validateLinks', () => {
-    it.only('debería devolver el array de objetos con los links y su status y statusText ', (done) => {
+    it('debería devolver el array de objetos con los links y su status y statusText ', (done) => {
     validateLinks(objLinks).then((result) => { 
         expect (result).toEqual(linksWithStatus); 
         done();
@@ -176,8 +174,20 @@ describe('validateLinks', () => {
 });
 });
 
-describe('stats', () => {
-  it('debería retornar el número de links totales y únicos', () => {
-  expect(statsOfLinks(linksWithStatus)).toEqual(objWithStats);
+describe('statsOfLinks', () => {
+  it('debería retornar el número de links totales y únicos', (done) => {
+  statsOfLinks(linksWithStatus).then((result) => {
+    expect(result).toEqual('Total: 6 Unique: 5' );
+    done();
+    });
   });
 });
+
+describe('statsOfLinks', () => {
+    it('debería retornar el número de links totales y únicos', (done) => {
+    linksBroken(linksWithStatus).then((result) => {
+      expect(result).toEqual('Broken: 1' );
+      done();
+      });
+    });
+  });
