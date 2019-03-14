@@ -9,8 +9,12 @@
     "jest"
   ],
   "license": "MIT",
-  "bin":{
-    "md-links": "./cli.js"
+  "bin": {
+    "md-links": "lib/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AthalaAB/md-links.git"
   },
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",

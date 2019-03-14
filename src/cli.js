@@ -1,9 +1,6 @@
-import {
-    mdLinks
-  } from "../module/md-links";
-import {
-    statsOfLinks, linksBroken
-  } from "./module/stats";
+#!/usr/bin/env node
+
+const [,, ...args] = process.argv
 
 
 
