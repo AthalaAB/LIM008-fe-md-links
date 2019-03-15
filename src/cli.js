@@ -14,7 +14,6 @@ import { mdLinks } from "./md-links.js";
       statsOfLinks(res).then(res => console.log(res))
       linksBroken(res).then(res => console.log(res))
     })
-    .catch(error => console.log(error))
  } else if (oneOption === '--validate' || oneOption === '--v'){
   mdLinks(path, {validate:true})
   .then(res => { res.forEach( (objLinks) => { console.log(`file: ${objLinks.file}, \nhref: ${objLinks.href}, \nmessage:${objLinks.message}, \nstatus:${objLinks.status}, \ntext:${objLinks.text}`)})})
@@ -24,11 +23,9 @@ import { mdLinks } from "./md-links.js";
   .then(res => {
     statsOfLinks(res).then(res => console.log(res))
   })
-  .catch(error => console.log(error))
  } else{
   mdLinks(path)
   .then(res => { res.forEach( (objLinks) => { console.log(`file: ${objLinks.file}, \nhref: ${objLinks.href}, \ntext:${objLinks.text}`)})})
-  .catch(error => console.log(error))
  }
 
 
