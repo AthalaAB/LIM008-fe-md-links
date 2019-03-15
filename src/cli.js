@@ -19,12 +19,12 @@ import { mdLinks } from "./md-links.js";
   .then(res => { res.forEach( (objLinks) => { console.log(`file: ${objLinks.file}, \nhref: ${objLinks.href}, \nmessage:${objLinks.message}, \nstatus:${objLinks.status}, \ntext:${objLinks.text}`)})})
   .catch(error => console.log(error))
  } else if(oneOption === '--stats' || oneOption === '--s'){
-  mdLinks(path)
+  mdLinks(path, {validate:false})
   .then(res => {
     statsOfLinks(res).then(res => console.log(res))
   })
  } else{
-  mdLinks(path)
+  mdLinks(path, {validate:false})
   .then(res => { res.forEach( (objLinks) => { console.log(`file: ${objLinks.file}, \nhref: ${objLinks.href}, \ntext:${objLinks.text}`)})})
  }
 
