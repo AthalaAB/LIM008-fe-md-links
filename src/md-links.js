@@ -20,7 +20,7 @@ export const mdLinks = (path, options) => {
     pathAbs = path;
   };
   return new Promise((resolve) => {
-    if (options === undefined) {
+    if (!options.validate) {
       resolve(getLinks(contentFiles(pathAbs)));
     } if (options.validate) {
       resolve(validateLinks(getLinks(contentFiles(pathAbs))));

@@ -186,13 +186,13 @@ message: 'OK' } ];
 
 describe('mdLinks', () =>{
 it('al ingresar una ruta deberia retornar una promesa que resuelva a un array de objetos, donde cada objeto representa un link y contiene las siguientes propiedades:href,text,file', (done) => {
-    mdLinks(`${process.cwd()}\\test\\mds`).then((result) => {
+    mdLinks(`${process.cwd()}\\test\\mds`, {validate: false}).then((result) => {
       expect(result).toEqual(objLinks);
       done();
     });
   });
   it('al ingresar una ruta deberia retornar una promesa que resuelva a un array de objetos, donde cada objeto representa un link y contiene las siguientes propiedades:href,text,file', (done) => {
-    mdLinks('test\\mds').then((result) => {
+    mdLinks('test\\mds', {validate: false}).then((result) => {
       expect(result).toEqual(objLinks);
       done();
     });
