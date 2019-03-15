@@ -11,7 +11,7 @@ import {
 // const mdLinks = require("md-links");
 
 
-const mdLinks = (path, options) => {
+export const mdLinks = (path, options) => {
 
   let pathAbs;
   if (!pathToBeAbsolute(path)) {
@@ -28,5 +28,5 @@ const mdLinks = (path, options) => {
   })
 }
 
-mdLinks('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds', {validate:true})
-.then(res => console.log(res));
+// mdLinks('C:\\Users\\Laboratoria\\Desktop\\MD-LINKS\\LIM008-fe-md-links\\Test\\mds')
+// .then(res => console.log(res));

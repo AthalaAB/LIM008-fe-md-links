@@ -1,4 +1,4 @@
-import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path";
+import { pathToBeAbsolute, relativeToAbsolute, pathIsDirectory, pathIsFile, contentFiles, getLinks } from "../src/module/path.js";
 
 const arrRoutesMD = [
     `${process.cwd()}\\test\\mds\\dir1\\readme.md`,
@@ -105,7 +105,7 @@ describe('pathIsDirectory', () => {
 
 describe('pathIsFile', () => {
     it ('deberia retornar true', () => {
-    expect(pathIsFile('Test\\prueba.js')).toEqual(true);
+    expect(pathIsFile('test\\prueba.js')).toEqual(true);
     });
 });
 

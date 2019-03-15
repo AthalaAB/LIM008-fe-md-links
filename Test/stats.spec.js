@@ -1,4 +1,4 @@
-import { statsOfLinks, linksBroken } from "../src/module/stats";
+import { statsOfLinks, linksBroken } from "../src/module/stats.js";
 
 const linksWithStatus = [ { href: 'https://es.wikipedia.org/wiki/Markdown',
 text: 'Markdown',

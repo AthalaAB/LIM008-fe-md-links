@@ -1,6 +1,6 @@
 import {
     validateLinks
-  } from "../module/validate";
+  } from "./validate.js";
 
  export const statsOfLinks = (arrObjLinks) => {
      const validate = validateLinks(arrObjLinks);
