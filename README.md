@@ -55,5 +55,8 @@ Los archivos markdown son renderizados con Marked. Para validar la respuesta HTT
 
 ![result4](https://user-images.githubusercontent.com/45071851/54457830-747f1a80-4730-11e9-8c98-2f6c18eeb621.JPG)
 
+## Sprint Backlog:
+
+![paraReadme](https://user-images.githubusercontent.com/45071851/54558627-3847f600-498c-11e9-84ba-330cda522e98.JPG)
 
 
